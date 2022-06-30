@@ -9,7 +9,6 @@ public class Users {
     @GeneratedValue
     private int id;
     private String username;
-
     private String email;
     private String password;
     private String firstname;
