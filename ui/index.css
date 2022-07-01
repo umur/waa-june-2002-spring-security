@@ -1,0 +1,22 @@
+.bg-mynav {
+    background-color: #0d5723;
+  }
+  
+  body {
+    font-size: 1.25rem;
+    background-color: #f6f8fa;
+  }
+  
+  td {
+      line-height: 3rem;
+  }
+  form{
+    width: 400px;
+    margin: auto;
+    border: solid gray 2px;
+    border-radius: 5px;
+    padding: 50px;
+  }
+  .container {
+    padding-top: 50px;
+  }
