@@ -1,6 +1,7 @@
 package com.miu.project6.annotation.aspect;
 
 import com.miu.project6.entity.ActivityLog;
+import com.miu.project6.service.impl.ActivityLogServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -19,7 +20,7 @@ public class ExecutionTimeAspect {
     @Autowired
     private ActivityLogServiceImpl activityLogService;
 
-    @Pointcut("@annotation(com.miu.project6.annotation.aspect.ExecutionTimeAspect)")
+    @Pointcut("@annotation(com.miu.project6.annotation.ExecutionTime)")
     public void executionTimeAnnotation() {
     }
 
