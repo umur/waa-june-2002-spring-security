@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Entity
 @Data
 @NoArgsConstructor
+@Table(name="reviews")
 public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "sequenceGenerator")
