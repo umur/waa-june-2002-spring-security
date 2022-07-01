@@ -1,5 +1,6 @@
 package com.websecu.security.Aop;
 
+import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import lombok.RequiredArgsConstructor;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -7,8 +8,6 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
-
-import javax.persistence.Cache;
 import javax.servlet.http.HttpServletRequest;
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -22,16 +21,16 @@ public class WaaOffensiveWord {
 
     private static Map<String,String> offensiveWords = new HashMap<>();
 
-    static Cache<String, UserOffensiveCount> userOffensiveCountMapper = (Cache<String, UserOffensiveCount>) CacheBuilder.newBuilder()
-                                                        .expireAfterAccess(30, TimeUnit.MINUTES)
-                                                        .build();
+    static Cache<String, UserOffensiveCount> userOffensiveCountMapper =  CacheBuilder.newBuilder()
+                                                        .expireAfterAccess(30, TimeUnit.MINUTES).build();
+
 
     static {
 
         offensiveWords.put("Spring","Spring");
-        offensiveWords.put("United","United");
+        offensiveWords.put("Horse","Horse");
+        offensiveWords.put("Field","Field");
         offensiveWords.put("Camel","Camel");
-        offensiveWords.put("Summer","Summer");
     }
     private final HttpServletRequest httpServletRequest;
 
