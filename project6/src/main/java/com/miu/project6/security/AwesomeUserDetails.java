@@ -14,12 +14,12 @@ import java.util.stream.Collectors;
 
 public class AwesomeUserDetails implements UserDetails {
 
-    private String email;
+    private final String email;
 
     @JsonIgnore
-    private String password;
+    private final String password;
 
-    private List<Role> roles;
+    private final List<Role> roles;
 
     public AwesomeUserDetails(User user) {
         this.email = user.getEmail();

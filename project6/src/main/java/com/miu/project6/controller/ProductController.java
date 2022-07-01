@@ -1,33 +1,42 @@
 package com.miu.project6.controller;
 
+import com.miu.project6.annotation.OffensiveWordValidation;
 import com.miu.project6.entity.Product;
-import com.miu.project6.entity.Review;
+import com.miu.project6.entity.User;
 import com.miu.project6.service.ProductService;
-import org.springframework.http.HttpStatus;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@AllArgsConstructor
 @RequestMapping("/api/v1/products")
-@CrossOrigin
 public class ProductController {
-
     private final ProductService productService;
 
-    public ProductController(ProductService productService) {
-        this.productService = productService;
-    }
-
+    @OffensiveWordValidation
     @PostMapping
-    public void save(@RequestBody Product p) {
-        productService.save(p);
+    public ResponseEntity<Product> save(@RequestBody Product p) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Object principal = authentication.getPrincipal();
+        if (principal instanceof AuthUser) {
+            User user = ((AuthUser) principal).getUser();
+            p.setUser(user);
+            productService.save(p);
+        }
+
+        return ResponseEntity.ok(p);
     }
 
+    @ExecutionTime
     @GetMapping
-    public List<Product> getAll() {
-        return productService.getAll();
+    public ResponseEntity<List<ProductDtoResponse>> getAll() {
+        var products = productService.getAll();
+        return ResponseEntity.ok().body(products);
     }
 
     @GetMapping("/{id}")
@@ -36,21 +45,13 @@ public class ProductController {
         return ResponseEntity.ok(product);
     }
 
-
     @DeleteMapping("/{id}")
     public void delete(@PathVariable int id) {
         productService.delete(id);
     }
 
     @PutMapping("/{id}")
-    public void update(@PathVariable("id") int productId) {
-        //call service
+    public void update(@PathVariable int id) {
+        // call service to update product
     }
-
-    @GetMapping("/{id}/reviews")
-    public ResponseEntity<Review> getReviewsByProductId(@PathVariable int id) {
-        // for demo purposes, this request is not authorized.
-        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
-    }
-
 }

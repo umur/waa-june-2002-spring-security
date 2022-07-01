@@ -29,10 +29,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        
+
         http
                 .csrf().disable()
                 .authorizeRequests()
+                .antMatchers("/").permitAll()
                 .antMatchers("/api/v1/uaa").permitAll()
                 .antMatchers("/api/v1/products").hasAuthority("CLIENT")
                 .anyRequest()
