@@ -1,6 +1,7 @@
 package com.miu.project6.service.impl;
 
 import com.miu.project6.entity.ActivityLog;
+import com.miu.project6.repo.ActivityLogRepo;
 import com.miu.project6.service.ActivityLogService;
 import org.springframework.stereotype.Service;
 

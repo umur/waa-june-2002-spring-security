@@ -1,10 +1,11 @@
 package com.miu.project6.controller;
 
+import com.miu.project6.annotation.ExecutionTime;
 import com.miu.project6.annotation.OffensiveWordValidation;
 import com.miu.project6.dto.ProductDtoResponse;
 import com.miu.project6.entity.Product;
 import com.miu.project6.entity.User;
-import com.miu.project6.security.AwesomeUserDetails;
+import com.miu.project6.security.AuthUser;
 import com.miu.project6.service.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -26,8 +27,8 @@ public class ProductController {
     public ResponseEntity<Product> save(@RequestBody Product p) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Object principal = authentication.getPrincipal();
-        if (principal instanceof AwesomeUserDetails.AuthUser) {
-            User user = ((AwesomeUserDetails.AuthUser) principal).getUser();
+        if (principal instanceof AuthUser) {
+            User user = ((AuthUser) principal).getUser();
             p.setUser(user);
             productService.save(p);
         }

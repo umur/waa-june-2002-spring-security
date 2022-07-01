@@ -1,6 +1,14 @@
 package com.miu.project6.security;
 
-@Service()
+import com.miu.project6.repo.UserRepo;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+
+@Service
 @Transactional
 public class AuthService implements UserDetailsService {
 
