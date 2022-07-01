@@ -1,7 +1,30 @@
 package com.miu.project6.security;
 
+<<<<<<< HEAD
 public class AuthUser implements UserDetails {
     private String userName;
+=======
+<<<<<<< HEAD:project6/src/main/java/com/miu/project6/security/AwesomeUserDetails.java
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import com.miu.project6.entity.Role;
+import com.miu.project6.entity.User;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class AwesomeUserDetails implements UserDetails {
+
+    private final String email;
+=======
+public class AuthUser implements UserDetails {
+    private String userName;
+>>>>>>> cad4705f720c5dfb468a9d45c84ea88ee840c166:project6/src/main/java/com/miu/project6/security/AuthUser.java
+>>>>>>> 1c2689e19932194540cef4ba3b59e80a1a79f6d1
 
     @JsonIgnore
     private String password;
