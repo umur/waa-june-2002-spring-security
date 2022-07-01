@@ -1,4 +1,4 @@
-package com.pprajapati.springsecurity.aspect;
+package com.example.spring_jwt.aspect;
 
 
 import com.pprajapati.springsecurity.domain.ActivityLog;
