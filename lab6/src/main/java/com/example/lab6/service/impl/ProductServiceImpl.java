@@ -1,9 +1,9 @@
 package com.example.lab6.service.impl;
 
 import com.example.lab6.dto.ProductDtoResponse;
+import com.example.lab6.entity.Product;
 import com.example.lab6.repo.ProductRepo;
 import com.example.lab6.service.ProductService;
-import com.sudip.lab5.entity.Product;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;

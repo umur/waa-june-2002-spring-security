@@ -1,7 +1,7 @@
 package com.example.lab6.aspect;
 
+import com.example.lab6.entity.Product;
 import com.example.lab6.exception.OffensiveWordException;
-import com.sudip.lab5.entity.Product;
 import lombok.AllArgsConstructor;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -38,7 +38,7 @@ public class OffensiveWordValidationAspect {
 
                 for (String offenseWord : offensiveWords) {
                     if (obj.toString().contains(offenseWord)) {
-                        com.sudip.lab5.entity.Product p = ((Product) obj);
+                        Product p = ((Product) obj);
 
                         p.setProductName(p.getProductName().replace(offenseWord, "****"));
 

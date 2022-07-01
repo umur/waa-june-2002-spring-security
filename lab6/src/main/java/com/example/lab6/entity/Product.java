@@ -1,6 +1,5 @@
-package com.sudip.lab5.entity;
+package com.example.lab6.entity;
 
-import com.example.lab6.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,12 +30,12 @@ public class Product {
 //  @OneToMany
 //  @JoinColumn(name = "product_id")
 //  @JsonManagedReference
-    private List<com.sudip.lab5.entity.Review> reviews;
+    private List<Review> reviews;
 
     //  @ManyToMany(mappedBy = "products")
     @ManyToMany
     @JoinTable(name = "categories_products",
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"))
-    private List<com.sudip.lab5.entity.Category> categories;
+    private List<Category> categories;
 }

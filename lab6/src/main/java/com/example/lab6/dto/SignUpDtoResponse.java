@@ -1,7 +1,7 @@
 package com.example.lab6.dto;
 
 
-import com.sudip.lab5.entity.User;
+import com.example.lab6.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

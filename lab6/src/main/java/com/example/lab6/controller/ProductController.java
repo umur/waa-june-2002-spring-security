@@ -1,12 +1,12 @@
 package com.example.lab6.controller;
 
-import annotation.ExecutionTime;
-import annotation.OffensiveWordValidation;
+import com.example.lab6.annotation.ExecutionTime;
+import com.example.lab6.annotation.OffensiveWordValidation;
 import com.example.lab6.dto.ProductDtoResponse;
+import com.example.lab6.entity.Product;
 import com.example.lab6.entity.User;
 import com.example.lab6.security.AuthUser;
 import com.example.lab6.service.ProductService;
-import com.sudip.lab5.entity.Product;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;

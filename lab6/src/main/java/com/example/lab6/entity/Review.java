@@ -1,4 +1,4 @@
-package com.sudip.lab5.entity;
+package com.example.lab6.entity;
 
 import lombok.Data;
 

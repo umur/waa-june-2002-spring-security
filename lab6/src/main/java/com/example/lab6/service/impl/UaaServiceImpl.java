@@ -3,6 +3,7 @@ package com.example.lab6.service.impl;
 import com.example.lab6.dto.*;
 import com.example.lab6.repo.RoleRepo;
 import com.example.lab6.repo.UserRepo;
+import com.example.lab6.security.helper.JwtHelper;
 import com.example.lab6.service.UaaService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,8 +13,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import com.sudip.lab5.entity.User;
-import com.sudip.lab5.entity.Role;
+import com.example.lab6.entity.User;
+import com.example.lab6.entity.Role;
 
 import java.util.ArrayList;
 

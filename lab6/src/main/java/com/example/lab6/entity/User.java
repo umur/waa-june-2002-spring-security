@@ -27,9 +27,9 @@ public class User {
 
     @JoinTable
     @ManyToMany(fetch = FetchType.EAGER)
-    private List<com.sudip.lab5.entity.Role> role;
+    private List<Role> role;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
 //  @JsonManagedReference
-    private List<com.sudip.lab5.entity.Product> products;
+    private List<Product> products;
 }
