@@ -1,12 +1,8 @@
 package com.miu.project6.controller;
 
-<<<<<<< HEAD
 import com.miu.project6.service.UaaService;
-=======
 import com.miu.project6.dto.*;
-import com.miu.project6.service.UaaService;
 import org.springframework.http.HttpStatus;
->>>>>>> 1c2689e19932194540cef4ba3b59e80a1a79f6d1
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

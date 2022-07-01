@@ -30,6 +30,5 @@ public class User {
     private List<Role> role;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-//  @JsonManagedReference
     private List<Product> products;
 }
