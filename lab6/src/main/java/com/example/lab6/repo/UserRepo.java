@@ -1,7 +1,9 @@
 package com.example.lab6.repo;
 
+import com.example.lab6.entity.User;
 import org.springframework.data.repository.CrudRepository;
-import com.sudip.lab5.entity.User;
 
-public interface UserRepo extends CrudRepository<User,Integer> {
+
+public interface UserRepo extends CrudRepository<User, Integer> {
+    User findByUserName(String userName);
 }

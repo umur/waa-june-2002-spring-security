@@ -3,7 +3,6 @@ package com.example.lab6.service.impl;
 import com.example.lab6.dto.*;
 import com.example.lab6.repo.RoleRepo;
 import com.example.lab6.repo.UserRepo;
-import com.example.lab6.security.helper.JwtHelper;
 import com.example.lab6.service.UaaService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
