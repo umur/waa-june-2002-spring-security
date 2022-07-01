@@ -1,6 +1,5 @@
 package com.example.spring_jwt.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 import javax.persistence.*;
