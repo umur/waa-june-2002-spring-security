@@ -1,7 +1,7 @@
 package com.example.spring_jwt.aspect;
 
-import com.pprajapati.springsecurity.domain.Product;
-import com.pprajapati.springsecurity.exceptionHandler.exceptions.OffensiveWordException;
+import com.example.spring_jwt.domain.Product;
+import com.example.spring_jwt.exceptionHandler.exceptions.OffensiveWordException;
 import lombok.AllArgsConstructor;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -26,7 +26,7 @@ public class OffensiveWordValidationAspect {
 
   private final List<String> offensiveWords = List.of("test", "testdata");
 
-  @Pointcut(value = "execution(* com.pprajapati.springsecurity.controller..*(..))")
+  @Pointcut(value = "execution(* com.example.spring_jwt.controller..*(..))")
   public void controller() {
   }
 

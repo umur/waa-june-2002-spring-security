@@ -1,9 +1,9 @@
 package com.example.spring_jwt.aspect;
 
 
-import com.pprajapati.springsecurity.domain.ActivityLog;
-import com.pprajapati.springsecurity.service.ActivityLogService;
-import com.pprajapati.springsecurity.service.impl.ActivityLogServiceImpl;
+import com.example.spring_jwt.domain.ActivityLog;
+import com.example.spring_jwt.service.ActivityLogService;
+import com.example.spring_jwt.service.impl.ActivityLogServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -22,7 +22,7 @@ public class ExecutionTimeAspect {
   @Autowired
   private ActivityLogServiceImpl activityLogService;
 
-  @Pointcut("@annotation(com.pprajapati.springsecurity.annotation.ExecutionTime)")
+  @Pointcut("@annotation(com.example.spring_jwt.annotation.ExecutionTime)")
   public void executionTimeAnnotation() {
   }
 

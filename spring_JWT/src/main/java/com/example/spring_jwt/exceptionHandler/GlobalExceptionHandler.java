@@ -1,6 +1,6 @@
-package com.pprajapati.springsecurity.exceptionHandler;
+package com.example.spring_jwt.exceptionHandler;
 
-import com.pprajapati.springsecurity.exceptionHandler.exceptions.OffensiveWordException;
+import com.example.spring_jwt.exceptionHandler.exceptions.OffensiveWordException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
