@@ -1,5 +1,4 @@
-package com.miu.project6.repository;
-
+package com.miu.project6.repo;
 
 import com.miu.project6.entity.Product;
 import org.springframework.data.repository.CrudRepository;
