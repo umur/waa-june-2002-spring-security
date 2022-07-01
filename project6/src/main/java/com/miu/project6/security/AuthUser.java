@@ -1,30 +1,20 @@
 package com.miu.project6.security;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import com.miu.project6.entity.Role;
-import com.miu.project6.entity.User;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
-
-public class AwesomeUserDetails implements UserDetails {
-
-    private String email;
+public class AuthUser implements UserDetails {
+    private String userName;
 
     @JsonIgnore
     private String password;
 
     private List<Role> roles;
 
-    public AwesomeUserDetails(User user) {
-        this.email = user.getEmail();
+    private User user;
+
+    public AuthUser(User user) {
+        this.userName = user.getUserName();
         this.password = user.getPassword();
-        this.roles = user.getRoles();
+        this.roles = user.getRole();
+        this.user = user;
     }
 
     @Override
@@ -41,7 +31,7 @@ public class AwesomeUserDetails implements UserDetails {
 
     @Override
     public String getUsername() {
-        return email;
+        return userName;
     }
 
     @Override
@@ -62,5 +52,9 @@ public class AwesomeUserDetails implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public User getUser() {
+        return user;
     }
 }

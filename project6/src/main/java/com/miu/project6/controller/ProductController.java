@@ -2,7 +2,6 @@ package com.miu.project6.controller;
 
 import com.miu.project6.entity.Product;
 import com.miu.project6.entity.Review;
-import com.miu.project6.service.ProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -4,7 +4,6 @@ package com.miu.project6.controller;
 import com.miu.project6.model.LoginRequest;
 import com.miu.project6.model.LoginResponse;
 import com.miu.project6.model.RefreshTokenRequest;
-import com.miu.project6.service.UaaService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
