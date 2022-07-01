@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
+    <title>Login</title>
+    
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-dark bg-mynav" style="height: 30px;">
+      
+    </nav>
+
+    <div class="container">
+      <form method="post">
+        <caption><h3>User credentials</h3></caption><br>
+        <input id="email" type="text" placeholder="Email" name="email"><br><br>
+        <input id="password" type="password" placeholder="Password" name="password"><br><br>
+        <input type="button" value="Login" onclick="loginUser()">
+      </form>
+    </div>
+
+    <script src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
