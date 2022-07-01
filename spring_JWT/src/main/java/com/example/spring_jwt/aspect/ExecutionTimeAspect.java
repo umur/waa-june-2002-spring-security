@@ -1,8 +1,7 @@
 package com.example.spring_jwt.aspect;
 
 
-import com.example.spring_jwt.domain.ActivityLog;
-import com.example.spring_jwt.service.ActivityLogService;
+import com.example.spring_jwt.entity.ActivityLog;
 import com.example.spring_jwt.service.impl.ActivityLogServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
