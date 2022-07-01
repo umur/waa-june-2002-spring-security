@@ -1,9 +1,9 @@
 INSERT INTO users (id, user_name, firstname, lastname, password)
 VALUES (1, 'admin', 'admin', 'admin', '$2a$10$NWnU7YutFYM3pDp2Mdy3xuKRcau8DNNAKA6iEyqaZwqyN5oU9srby');
 INSERT INTO users (id, user_name, firstname, lastname, password)
-VALUES (2, 'pprajapati', 'puru', 'prajapati', '$2a$10$NWnU7YutFYM3pDp2Mdy3xuKRcau8DNNAKA6iEyqaZwqyN5oU9srby');
+VALUES (2, 'saugat', 'saugat', 'pageni', '$2a$10$NWnU7YutFYM3pDp2Mdy3xuKRcau8DNNAKA6iEyqaZwqyN5oU9srby');
 INSERT INTO users (id, user_name, firstname, lastname, password)
-VALUES (3, 'user', 'user', 'user', '$2a$10$NWnU7YutFYM3pDp2Mdy3xuKRcau8DNNAKA6iEyqaZwqyN5oU9srby');
+VALUES (3, 'anand', 'anand', 'kc', '$2a$10$NWnU7YutFYM3pDp2Mdy3xuKRcau8DNNAKA6iEyqaZwqyN5oU9srby');
 
 INSERT INTO roles (id, role)
 VALUES (1, 'ADMIN');
