@@ -1,7 +1,9 @@
 package com.miu.project6.service;
 
 
-import edu.miu.springsecurity1.entity.Product;
+
+
+import com.miu.project6.entity.Product;
 
 import java.util.List;
 

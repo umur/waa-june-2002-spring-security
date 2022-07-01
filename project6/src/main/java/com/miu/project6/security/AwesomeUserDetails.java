@@ -1,8 +1,9 @@
 package com.miu.project6.security;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import edu.miu.springsecurity1.entity.Role;
-import edu.miu.springsecurity1.entity.User;
+
+import com.miu.project6.entity.Role;
+import com.miu.project6.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

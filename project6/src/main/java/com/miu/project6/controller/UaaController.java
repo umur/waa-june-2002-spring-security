@@ -1,9 +1,10 @@
 package com.miu.project6.controller;
 
-import edu.miu.springsecurity1.model.LoginRequest;
-import edu.miu.springsecurity1.model.LoginResponse;
-import edu.miu.springsecurity1.model.RefreshTokenRequest;
-import edu.miu.springsecurity1.service.UaaService;
+
+import com.miu.project6.model.LoginRequest;
+import com.miu.project6.model.LoginResponse;
+import com.miu.project6.model.RefreshTokenRequest;
+import com.miu.project6.service.UaaService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

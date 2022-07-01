@@ -1,6 +1,7 @@
 package com.miu.project6.security;
 
-import edu.miu.springsecurity1.repository.UserRepo;
+
+import com.miu.project6.repository.UserRepo;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

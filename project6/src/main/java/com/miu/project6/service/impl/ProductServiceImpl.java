@@ -1,8 +1,9 @@
 package com.miu.project6.service.impl;
 
-import edu.miu.springsecurity1.entity.Product;
-import edu.miu.springsecurity1.repository.ProductRepo;
-import edu.miu.springsecurity1.service.ProductService;
+
+import com.miu.project6.entity.Product;
+import com.miu.project6.repository.ProductRepo;
+import com.miu.project6.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
