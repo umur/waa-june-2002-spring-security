@@ -1,9 +1,11 @@
 package edu.miu.spring_data.service.impl;
 
+import edu.miu.spring_data.entity.Role;
+import edu.miu.spring_data.model.SignUpDto;
 import edu.miu.spring_data.dto.UserDto;
 import edu.miu.spring_data.entity.Address;
 import edu.miu.spring_data.entity.Product;
-import edu.miu.spring_data.entity.Review;
+
 import edu.miu.spring_data.entity.User;
 import edu.miu.spring_data.repository.AddressRepository;
 import edu.miu.spring_data.repository.UserRepository;
@@ -12,10 +14,13 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -26,6 +31,7 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository ;
     private final AddressRepository addressRepository;
     private final ModelMapper modelmapper = new ModelMapper();
+    private final PasswordEncoder passwordEncoder;
 
 
     @Override
@@ -56,10 +62,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto addUser(UserDto userDto) {
         int address_id = userDto.getAddressId();
+
         Address addr = addressRepository.findById(address_id).orElse(null);
-        System.out.println(address_id);
         User user = modelmapper.map(userDto, User.class);
         user.setAddress(addr);
+        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         User s = userRepository.save(user);
         UserDto u = modelmapper.map(s, UserDto.class);
         return u;
@@ -86,6 +93,31 @@ public class UserServiceImpl implements UserService {
         if(user != null)
         { userRepository.delete(user); }
 
+    }
+
+    @Override
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
+
+
+    @Override
+    public SignUpDto addSignUpUser(SignUpDto signUpDto) {
+        int address_id = signUpDto.getAddressId();
+
+        Address addr = addressRepository.findById(address_id).orElse(null);
+        User user = new User();
+        user.setFirstname(signUpDto.getFirstname());
+        user.setLastname(signUpDto.getLastname());
+        user.setPassword(passwordEncoder.encode(signUpDto.getPassword()));
+        user.setEmail(signUpDto.getEmail());
+        user.setAddress(addr);
+        user.setRoles(Arrays.asList(new Role("ADMIN")));
+
+        userRepository.save(user);
+
+        return signUpDto;
     }
 
     @Override

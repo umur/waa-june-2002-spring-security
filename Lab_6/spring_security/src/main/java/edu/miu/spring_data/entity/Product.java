@@ -25,7 +25,7 @@ public class Product {
     private double rating;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JsonBackReference
+    @JsonManagedReference
     private User user ;
 
     @ManyToOne

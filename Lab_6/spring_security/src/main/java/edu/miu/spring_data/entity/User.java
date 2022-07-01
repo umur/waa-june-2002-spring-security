@@ -29,9 +29,9 @@ public class User {
     private String firstname;
     private String lastname ;
 
-    @OneToMany(fetch = FetchType.LAZY ,cascade = {CascadeType.REMOVE , CascadeType.PERSIST , CascadeType.MERGE , CascadeType.REFRESH})
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "product_user")
-    @JsonManagedReference
+    @JsonBackReference
     //@BatchSize(size = 1)
     //@Fetch(FetchMode.JOIN)
     private List<Product> products = new ArrayList<>();
@@ -44,7 +44,7 @@ public class User {
     @JoinColumn(name = "address_ID")
     private Address address;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
     @JoinTable
     private List<Role> roles ;
 

@@ -2,15 +2,22 @@ package edu.miu.spring_data.service.impl;
 
 import edu.miu.spring_data.dto.ProductDto;
 
-import edu.miu.spring_data.entity.Category;
 import edu.miu.spring_data.entity.Product;
 
 import edu.miu.spring_data.entity.Review;
 
+import edu.miu.spring_data.entity.User;
 import edu.miu.spring_data.repository.ProductRepository;
+import edu.miu.spring_data.repository.UserRepository;
 import edu.miu.spring_data.service.ProductService;
+import edu.miu.spring_data.service.UserService;
+import edu.miu.spring_data.util.ListMapper;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
@@ -25,20 +32,22 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
+    private final UserRepository userRepository;
     private final ModelMapper modelmapper = new ModelMapper();
+    private final ListMapper<Product , ProductDto> listMapperProductToDto;
 
     @PersistenceContext
     EntityManager em;
 
-    //private final ListMapper<Product , ProductDto> listMapperProductToDto;   // from helper package
+
 
     @Override
     public List<ProductDto> findAll() {
 
         var products = productRepository.findAll();
-
-        return null;
-//        return (List<ProductDto>) listMapperProductToDto.mapList(products , new ProductDto());
+        //return modelmapper.map(products , new TypeToken<List<ProductDto>>(){}.getType());
+        List<ProductDto> results = listMapperProductToDto.mapList(products , ProductDto.class);
+        return results;
     }
 
     @Override
@@ -56,6 +65,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductDto addProduct(ProductDto productDto) {
         Product product = modelmapper.map(productDto , Product.class);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        User user = userRepository.findByEmail(userDetails.getUsername());
+        product.setUser(user);
         Product p = productRepository.save(product);
         ProductDto pp = modelmapper.map(p , ProductDto.class);
         return pp;

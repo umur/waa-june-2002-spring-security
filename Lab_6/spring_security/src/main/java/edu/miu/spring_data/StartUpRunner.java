@@ -4,6 +4,8 @@ import edu.miu.spring_data.entity.*;
 import edu.miu.spring_data.repository.*;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
@@ -18,17 +20,28 @@ public class StartUpRunner implements CommandLineRunner {
     private final CategoryRepository categoryRepository;
     private final ProductRepository productRepository;
     private final AddressRepository addressRepository;
+    private final RoleRepository roleRepository;
+    private final PasswordEncoder encoder;
 
 
     @Transactional
     public void run(String... args) throws Exception {
 
+        //PasswordEncoder encoder = new BCryptPasswordEncoder();
+
+        Role adminRole = new Role("ADMIN");
+        Role userRole = new Role("USER");
+
+
+
         Address a1 = new Address("1000 4th Street" , 52557 , "Fair Field");
         Address a2 = new Address("King George Street" , 67897 , "Addis Ababa");
-        User user1 = new User("megdiwg@gmail.com" , "Klaklk" , "Hanna" , "Kedir");
+        User user1 = new User("admin@gmail.com" , encoder.encode("1234") , "Hanna" , "Kedir");
         user1.setAddress(a1);
-        User user2 = new User("megdiwg@gmail.com" , "Klaklk" , "Alemu" , "Bekele");
+        user1.setRoles(Arrays.asList(adminRole));
+        User user2 = new User("user@gmail.com" , encoder.encode("1234") , "Alemu" , "Bekele");
         user2.setAddress(a2);
+        user2.setRoles(Arrays.asList(userRole));
 
         Review review1 = new Review("True to size");
         review1.setUser(user1);
@@ -69,6 +82,8 @@ public class StartUpRunner implements CommandLineRunner {
         product2.setUser(user1);
         product3.setUser(user2);
         product4.setUser(user2);
+
+
 
         addressRepository.save(a1);
         addressRepository.save(a2);

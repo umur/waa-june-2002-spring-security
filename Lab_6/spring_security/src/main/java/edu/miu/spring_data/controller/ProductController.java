@@ -4,11 +4,16 @@ import edu.miu.spring_data.dto.ProductDto;
 
 import edu.miu.spring_data.entity.Product;
 import edu.miu.spring_data.entity.Review;
+import edu.miu.spring_data.entity.User;
 import edu.miu.spring_data.service.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.CurrentSecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -18,6 +23,7 @@ import java.util.List;
 public class ProductController {
 
     private final ProductService productService;
+
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping
@@ -32,7 +38,8 @@ public class ProductController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public ProductDto addProduct(@RequestBody ProductDto productDto) {
+    public ProductDto addProduct(@RequestBody ProductDto productDto ){
+
         return productService.addProduct(productDto);
     }
 
