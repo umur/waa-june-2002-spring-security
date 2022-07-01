@@ -1,6 +1,5 @@
 package com.miu.project6.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -35,8 +34,8 @@ public class Product {
 
     //  @ManyToMany(mappedBy = "products")
     @ManyToMany
-    @JoinTable(name="categories_products",
-            joinColumns = @JoinColumn(name="product_id"),
-            inverseJoinColumns = @JoinColumn(name="category_id"))
+    @JoinTable(name = "categories_products",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
     private List<Category> categories;
 }
