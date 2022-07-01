@@ -1,5 +1,23 @@
 package com.miu.project6.service.impl;
 
+import com.miu.project6.dto.*;
+import com.miu.project6.entity.Role;
+import com.miu.project6.entity.User;
+import com.miu.project6.repo.RoleRepo;
+import com.miu.project6.repo.UserRepo;
+import com.miu.project6.security.helper.JwtHelper;
+import com.miu.project6.service.UaaService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
