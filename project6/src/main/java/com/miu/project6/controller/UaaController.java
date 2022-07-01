@@ -1,11 +1,10 @@
 package com.miu.project6.controller;
 
+import com.miu.project6.dto.*;
 import com.miu.project6.service.UaaService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/uaa")
@@ -28,7 +27,7 @@ public class UaaController {
     }
 
     @PostMapping("/refreshToken")
-    public LoginDtoResponse refreshToken(@RequestBody RefreshTokenDtoRequest refreshTokenRequest){
+    public LoginDtoResponse refreshToken(@RequestBody RefreshTokenDtoRequest refreshTokenRequest) {
         return uaaService.refreshToken(refreshTokenRequest);
     }
 

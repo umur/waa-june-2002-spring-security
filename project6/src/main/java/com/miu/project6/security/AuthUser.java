@@ -1,5 +1,6 @@
 package com.miu.project6.security;
 
+<<<<<<< HEAD:project6/src/main/java/com/miu/project6/security/AwesomeUserDetails.java
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import com.miu.project6.entity.Role;
@@ -15,16 +16,23 @@ import java.util.stream.Collectors;
 public class AwesomeUserDetails implements UserDetails {
 
     private final String email;
+=======
+public class AuthUser implements UserDetails {
+    private String userName;
+>>>>>>> cad4705f720c5dfb468a9d45c84ea88ee840c166:project6/src/main/java/com/miu/project6/security/AuthUser.java
 
     @JsonIgnore
     private final String password;
 
     private final List<Role> roles;
 
-    public AwesomeUserDetails(User user) {
-        this.email = user.getEmail();
+    private User user;
+
+    public AuthUser(User user) {
+        this.userName = user.getUserName();
         this.password = user.getPassword();
-        this.roles = user.getRoles();
+        this.roles = user.getRole();
+        this.user = user;
     }
 
     @Override
@@ -41,7 +49,7 @@ public class AwesomeUserDetails implements UserDetails {
 
     @Override
     public String getUsername() {
-        return email;
+        return userName;
     }
 
     @Override
@@ -62,5 +70,9 @@ public class AwesomeUserDetails implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public User getUser() {
+        return user;
     }
 }

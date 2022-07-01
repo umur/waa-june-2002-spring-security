@@ -1,30 +1,15 @@
 package com.miu.project6.security;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-
-    private final UserDetailsService awesomeUserDetailsService;
+    private final UserDetailsService userDetailsService;
     private final JwtFilter jwtFilter;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(awesomeUserDetailsService);
+        auth.userDetailsService(userDetailsService);
     }
 
     @Override
@@ -35,7 +20,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/api/v1/uaa").permitAll()
-                .antMatchers("/api/v1/products").hasAuthority("CLIENT")
+                .antMatchers("/api/v1/uaa/login").permitAll()
+                .antMatchers("/api/v1/products").hasAuthority("ADMIN")
                 .anyRequest()
                 .authenticated()
                 .and()
