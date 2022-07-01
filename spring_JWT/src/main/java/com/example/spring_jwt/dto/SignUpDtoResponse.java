@@ -1,6 +1,5 @@
-package com.pprajapati.springsecurity.dto;
-
-import com.pprajapati.springsecurity.domain.User;
+package com.example.spring_jwt.dto;
+import com.example.spring_jwt.entity.Users;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,5 +8,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SignUpDtoResponse {
-  private User user;
+  private Users user;
 }
