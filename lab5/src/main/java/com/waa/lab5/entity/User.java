@@ -26,7 +26,7 @@ public class User {
 
     private String lastname;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     private Address address;
 
     @ManyToMany

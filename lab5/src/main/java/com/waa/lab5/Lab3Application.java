@@ -11,7 +11,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -30,11 +29,9 @@ public class Lab3Application {
     @Bean
     public CommandLineRunner commandLineRunner() {
         return args -> {
-            var adminRole = new Role(null, "ADMIN", null);
-            var userRole = new Role(null, "USER", null);
 
-			roleRepository.save(adminRole);
-			roleRepository.save(userRole);
+			var adminRole = roleRepository.save(new Role(null, "ADMIN", null));
+			var userRole = roleRepository.save(new Role(null, "USER", null));
 
             var address = addressRepository.save(new Address(null, "4th N. S.", "52557", "Fairfield"));
 
@@ -54,11 +51,15 @@ public class Lab3Application {
                     address,
                     List.of(userRole));
 
-			adminRole.setUsers(List.of(adminUser));
-			userRole.setUsers(List.of(userUser));
+            userRepository.save(adminUser);
+            userRepository.save(userUser);
 
-			userRepository.save(adminUser);
-			userRepository.save(userUser);
+            adminRole.setUsers(List.of(adminUser));
+            userRole.setUsers(List.of(userUser));
+
+            roleRepository.save(adminRole);
+            roleRepository.save(userRole);
+
 
 
         };
