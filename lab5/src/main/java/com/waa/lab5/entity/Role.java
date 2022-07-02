@@ -7,30 +7,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "users")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class User {
+public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String email;
-
-    private String password;
-
-    private String firstname;
-
-    private String lastname;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    private Address address;
+    private String name;
 
     @ManyToMany
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    private List<Role> roles = new ArrayList<>();
+    private List<User> users = new ArrayList<>();
 }
