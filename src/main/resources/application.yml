@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: JWT
+  datasource:
+    password: O1933419@mssqlserver
+    url: jdbc:sqlserver://localhost;databaseName=JWT;encrypt=false;
+    username: sa
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+        format_sql: true
+    show-sql: true
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+server:
+  port: 8080
