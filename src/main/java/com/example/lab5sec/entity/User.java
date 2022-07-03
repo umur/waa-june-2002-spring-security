@@ -1,5 +1,6 @@
 package com.example.lab5sec.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,4 +28,8 @@ public class User {
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     public List<Role> roles;
+
+    @OneToMany(mappedBy = "owner")
+    @JsonBackReference
+    List<Product> products;
 }

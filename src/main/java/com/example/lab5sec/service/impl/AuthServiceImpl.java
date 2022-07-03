@@ -2,7 +2,6 @@ package com.example.lab5sec.service.impl;
 
 import com.example.lab5sec.entity.Role;
 import com.example.lab5sec.entity.User;
-import com.example.lab5sec.enums.RoleType;
 import com.example.lab5sec.model.LoginRequest;
 import com.example.lab5sec.model.LoginResponse;
 import com.example.lab5sec.model.SignupRequest;
@@ -16,18 +15,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 @Slf4j
 public class AuthServiceImpl implements AuthService {
 
-    private final AuthenticationManager authenticationManager;
-    private final JwtHelper jwtHelper;
+    @Autowired
+    private  AuthenticationManager authenticationManager;
+    @Autowired
+    private JwtHelper jwtHelper;
 
     @Autowired
     private RoleRepo roleRepo;
@@ -35,15 +39,20 @@ public class AuthServiceImpl implements AuthService {
     @Autowired
     private UserRepo userRepo;
 
+    @Autowired
+    private BCryptPasswordEncoder passwordEncode;
+
     @Override
     public LoginResponse login(LoginRequest loginRequest) {
-
+        log.info("coming");
         try {
             var result = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(loginRequest.getEmail(),
-                            loginRequest.getPassword())
+                            loginRequest.getPassword() )
             );
-        } catch (BadCredentialsException e) {
+            log.info("==> "+result);
+        }
+        catch (BadCredentialsException e) {
             log.info("Bad Credentials");
         }
         final String accessToken = jwtHelper.generateToken(loginRequest.getEmail());
@@ -58,7 +67,7 @@ public class AuthServiceImpl implements AuthService {
         User newUser = new User();
         newUser.setName(signupRequest.getName());
         newUser.setEmail(signupRequest.getEmail());
-        newUser.setPassword(signupRequest.getPassword());
+        newUser.setPassword(passwordEncode.encode(signupRequest.getPassword()));
 
         List<Role> roles = new ArrayList<>();
         Role userRole = roleRepo.getByName("CLIENT");
